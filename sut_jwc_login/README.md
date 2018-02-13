@@ -8,6 +8,8 @@ pip install requests
 
 pip install Image
 
+pip install pytesseract
+
 需要安装Tesseract-OCR
 
 使用方法:

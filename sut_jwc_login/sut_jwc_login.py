@@ -1,7 +1,7 @@
 import requests
 from PIL import Image
 from io import BytesIO
-import subprocess
+import pytesseract
 import re
 import sys
 
@@ -15,12 +15,8 @@ session = requests.session()
 def login(UserName, PassWord):
     response = session.get("http://202.199.96.30/ACTIONVALIDATERANDOMPICTURE.APPPROCESS", headers=headers)
     image = Image.open(BytesIO(response.content))
-    image.save("tmp.jpg")
-    p = subprocess.Popen("tesseract tmp.jpg tmp", stdout=subprocess.PIPE, stderr=subprocess.PIPE,
-                             shell=True)
-    p.wait()
-    f = open("tmp.txt", "r")
-    v = f.read().replace("\n", "")
+    v = pytesseract.image_to_string(image)
+    v = v.replace("\n", "")
     v = re.sub("\D", "", v)
     datas = {
         "WebUserNO":UserName,
