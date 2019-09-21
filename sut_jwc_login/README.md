@@ -15,3 +15,5 @@ pip install pytesseract
 使用方法:
 
 直接在终端：python sut_jwc_login.py username password
+
+新增新版教务处登陆脚本
