@@ -23,7 +23,7 @@ for i in range(len(rst["list"])):
 
     sss = ss1 + "\n\n" + ss2
 
-    FileAction(filename="./output/rst").write(sss)
+    FileAction(filename="./__output__/rst").write(sss)
     
 # for page in range(1, 40):
 #     rq.data = {
