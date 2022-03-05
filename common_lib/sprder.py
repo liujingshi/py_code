@@ -1,4 +1,5 @@
-from lib import Request
+from fileinput import filename
+from lib import Request, FileAction
 from json import loads
 
 rq = Request(url="http://www.pangubpm.com/pagedoc1.html", method="POST", data={
@@ -22,9 +23,7 @@ for i in range(len(rst["list"])):
 
     sss = ss1 + "\n\n" + ss2
 
-    f = open("./result/rst", "w", encoding="UTF-8")
-    f.write(sss)
-    f.close()
+    FileAction(filename="./output/rst").write(sss)
     
 # for page in range(1, 40):
 #     rq.data = {

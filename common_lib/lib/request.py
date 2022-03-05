@@ -1,7 +1,8 @@
 from urllib.parse import urlencode
 from requests import session
+from .base_class import BaseClass
 
-class Request(object):
+class Request(BaseClass):
 
     def __init__(self, **args):
         """
@@ -37,13 +38,6 @@ class Request(object):
         self.header = {  # 请求头
             "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36",
         }
-
-    def _setProperty(self, args, field):
-        if self._existField(args, field):
-            setattr(self, field, args[field])
-
-    def _existField(self, args, field):
-        return isinstance(args, dict) and field in args.keys() and args[field] != ""
 
     def _get(self):
         if self.url:
