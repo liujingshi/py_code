@@ -11,21 +11,12 @@ class NiuTransApi:
 
 class NiuTrans(BaseClass):
 
-    def __init__(self, **args):
-        """
-        默认值
-        """
-        self.api = None
+    def __init__(self,
+                api=None):
+        self.api = api
 
-        self._initialize()
-
-        """
-        用户传值
-        """
-        self._setProperty(args, "api")
-
-    def _initialize(self):
-        self.api = NiuTrans.TextApi
+        if self.api == None:
+            self.api = NiuTrans.TextApi
 
     def setApi(self, api):
         self.api = api
